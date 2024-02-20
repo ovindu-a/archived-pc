@@ -24,7 +24,7 @@ class Dog extends Animal {
     }
     public Dog() {
         super("Dog" + Integer.toString(Dog.dogCount));
-        // constructorCalled = true;
+        constructorCalled = true;
     }
     
     public Dog(String name) {
