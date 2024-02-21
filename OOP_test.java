@@ -1,52 +1,46 @@
-class Animal {
-    String name;
-    static int count = 0;
-    {
-        count++;
-    }
-    public Animal() {
-        this.name = "Animal" + Integer.toString(Animal.count);
-    }
-    public Animal(String name) {
-        this.name = name;
-    }
-    public void printState() {
-        System.out.println("Animal's name is " + this.name);;
-    }
+interface Animal {
+    public void setName(String name);
+    public String getName();
+    public void printState();
 }
 
-class Dog extends Animal {
+class Dog implements Animal {
+    String name;
     static int dogCount = 0;
     // boolean constructorCalled = false;
     {
         dogCount++;
         // System.out.println(constructorCalled);
     }
-    public Dog() {
-        super("Dog" + Integer.toString(Dog.dogCount));
-        constructorCalled = true;
-    }
+    // public Dog() {
+    //     super("Dog" + Integer.toString(Dog.dogCount));
+    //     constructorCalled = true;
+    // }
     
     public Dog(String name) {
-        super(name);
+        this.setName(name);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }   
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void printState() {
+        System.out.println("Dog: " + this.name);
     }
 }
 
 public class OOP_test {
     public static void main(String[] args) {
-        Animal animal1 = new Animal();
-        Animal animal2 = new Animal("Lion");
 
-        animal1.printState();
-        animal2.printState();
-
-        Dog dog1 = new Dog();
-        Dog dog2 = new Dog("Buddy");
-        Dog dog3 = new Dog();
+        Dog dog1 = new Dog("Buddy");
 
         dog1.printState();
-        dog2.printState();
-        dog3.printState();
+
     }
 }
 
